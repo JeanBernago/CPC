@@ -480,23 +480,6 @@
   font-size:.95rem;
   color:var(--ivory);
 }
-    document.getElementById("voteBtn").addEventListener("click", () => {
-
-    const choix = document.querySelector(
-        'input[name="tournoi"]:checked'
-    );
-
-    if(!choix){
-        document.getElementById("messageVote").innerHTML =
-        "⚠️ Sélectionnez un format.";
-        return;
-    }
-
-    document.getElementById("messageVote").innerHTML =
-    "✅ Vote enregistré pour : <strong>" +
-    choix.parentElement.textContent +
-    "</strong>";
-});
   </style>
 </head>
 <body>
@@ -1024,6 +1007,23 @@
       btn.disabled=true;
     }
   }
+      document.getElementById("voteBtn").addEventListener("click", () => {
+
+    const choix = document.querySelector(
+        'input[name="tournoi"]:checked'
+    );
+
+    if(!choix){
+        document.getElementById("messageVote").innerHTML =
+        "⚠️ Sélectionnez un format.";
+        return;
+    }
+
+    document.getElementById("messageVote").innerHTML =
+    "✅ Vote enregistré pour : <strong>" +
+    choix.parentElement.textContent +
+    "</strong>";
+});
 </script>
 </body>
 </html>
