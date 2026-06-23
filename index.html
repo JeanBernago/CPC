@@ -493,7 +493,7 @@
       <span class="t3">Club</span>
     </h1>
     <p class="hero-desc">
-      La référence du poker en Corse depuis 2014. Texas Hold'em, tournois, cash games — une communauté passionnée au cœur de l'île.
+      La référence du poker en Corse depuis 2014. Texas Hold'em, tournois et autres variantes — une communauté passionnée au cœur de l'île.
     </p>
     <div class="hero-actions">
       <a href="#parties" class="btn-primary">Prochaines parties →</a>
@@ -539,7 +539,7 @@
             <span class="nc-date">18 juin 2026</span>
           </div>
           <h3 class="nc-title">Tournoi Live winamax A — U babbu remporte le siège live ! </h3>
-          <p class="nc-excerpt">Après une super finale mouvementée, c'est finalement U-babbu qui s'impose face a RIP-MAMBA dit "Filouvitch".</p>
+          <p class="nc-excerpt">Après une super finale mouvementée, c'est finalement U-babbu qui s'impose face a RIP-MAMBA dit "Filouvitch" ou l'éternel second.</p>
         </div>
         <div class="nc-foot">
           <span class="nc-more">Lire l'article <span>→</span></span>
@@ -550,6 +550,64 @@
     </div>
   </div>
 </section>
+  <!-- ══════════════ VOTE ══════════════ -->
+  <section id="vote-tournoi" class="vote-section">
+    <h2>🗳️ Vote du prochain tournoi CPC</h2>
+
+    <p>
+        Choisissez le format que vous souhaitez jouer lors du prochain tournoi.
+        Le format ayant le plus de votes sera sélectionné.
+    </p>
+
+    <form id="voteForm">
+        <label>
+            <input type="radio" name="tournoi" value="Deepstack Holdem Rebuy + Add-on">
+            Deepstack Holdem Rebuy + Add-on
+        </label>
+        <br><br>
+
+        <label>
+            <input type="radio" name="tournoi" value="PL4 Omaha">
+            PL4 Omaha (Pourquoi pas)
+        </label>
+        <br><br>
+
+        <label>
+            <input type="radio" name="tournoi" value="KO Progressif">
+            KO Progressif
+        </label>
+        <br><br>
+
+        <label>
+            <input type="radio" name="tournoi" value="Freezout">
+            Freezout
+        </label>
+        <br><br>
+
+        <button type="submit">Voter</button>
+    </form>
+
+    <p id="messageVote"></p>
+</section>
+
+<script>
+document.getElementById("voteForm").addEventListener("submit", function(e) {
+    e.preventDefault();
+
+    const choix = document.querySelector('input[name="tournoi"]:checked');
+
+    if (!choix) {
+        document.getElementById("messageVote").innerHTML =
+            "⚠️ Veuillez sélectionner un format.";
+        return;
+    }
+
+    localStorage.setItem("voteCPC", choix.value);
+
+    document.getElementById("messageVote").innerHTML =
+        "✅ Votre vote pour <strong>" + choix.value + "</strong> a été enregistré.";
+});
+</script>
 
 <!-- ══════════════ PARTIES ══════════════ -->
 <section id="parties" class="section">
@@ -634,7 +692,7 @@
           <tr><td><span class="rank">5</span></td><td><span class="pname">L77A</span></td><td>3</td><td>1</td><td><span class="pts">35450</span></td></tr>
           <tr><td><span class="rank">6</span></td><td><span class="pname">-PhOeNiX2a-</span></td><td>3</td><td>0</td><td><span class="pts">33100</span></td></tr>
           <tr><td><span class="rank">7</span></td><td><span class="pname">Stella2a</span></td><td>3</td><td>0</td><td><span class="pts">31450</span></td></tr>
-          <tr><td><span class="rank">8</span></td><td><span class="pname">Scb1905</span></td><td>3</td><td>1</td><td><span class="pts">28050</span></td></tr>
+          <tr><td><span class="rank">8</span></td><td><span class="pname">Anvieu2a</span></td><td>3</td><td>1</td><td><span class="pts">36200</span></td></tr>
           <tr><td><span class="rank">9</span></td><td><span class="pname">Francesco</span></td><td>3</td><td>0</td><td><span class="pts">23150</span></td></tr>
           <tr><td><span class="rank">10</span></td><td><span class="pname">vae victis 2</span></td><td>3</td><td>0</td><td><span class="pts">22000</span></td></tr>
           <tr><td><span class="rank">11</span></td><td><span class="pname">LechArdon A</span></td><td>3</td><td>0</td><td><span class="pts">22000</span></td></tr>
@@ -648,7 +706,6 @@
           <tr><td><span class="rank">19</span></td><td><span class="pname">Jean Bernago</span></td><td>3</td><td>0</td><td><span class="pts">10000</span></td></tr>
           <tr><td><span class="rank">20</span></td><td><span class="pname">mAteo2014</span></td><td>3</td><td>0</td><td><span class="pts">9000</span></td></tr>
           <tr><td><span class="rank">21</span></td><td><span class="pname">Colombo</span></td><td>3</td><td>0</td><td><span class="pts">9000</span></td></tr>
-          <tr><td><span class="rank">22</span></td><td><span class="pname">Anvieu2a</span></td><td>3</td><td>0</td><td><span class="pts">8150</span></td></tr>
           <tr><td><span class="rank">23</span></td><td><span class="pname">Jean Paul</span></td><td>3</td><td>0</td><td><span class="pts">8000</span></td></tr>
           <tr><td><span class="rank">24</span></td><td><span class="pname">Padingo</span></td><td>3</td><td>0</td><td><span class="pts">7000</span></td></tr>
           <tr><td><span class="rank">25</span></td><td><span class="pname">U Mulizzu</span></td><td>3</td><td>0</td><td><span class="pts">6000</span></td></tr>
@@ -661,26 +718,6 @@
         </tbody>
       </table>
     </div>
-
-    <!-- CASH GAME -->
-    <div class="tab-pane rv" id="tp-cashgame">
-      <table class="rtable">
-        <thead>
-          <tr><th width="56">#</th><th>Joueur</th><th>Sessions</th><th>Heures</th><th>Profit net</th><th>BB/100</th></tr>
-        </thead>
-        <tbody>
-          <tr><td><span class="rank top">🥇</span></td><td><span class="pname">Lucia Santini</span></td><td>11</td><td>48 h</td><td><span class="up">+1 510 €</span></td><td><span class="pts">+8.2</span></td></tr>
-          <tr><td><span class="rank top">🥈</span></td><td><span class="pname">Julien Marchetti</span></td><td>13</td><td>55 h</td><td><span class="up">+890 €</span></td><td><span class="pts">+4.7</span></td></tr>
-          <tr><td><span class="rank top">🥉</span></td><td><span class="pname">Sofia Cesari</span></td><td>10</td><td>42 h</td><td><span class="up">+620 €</span></td><td><span class="pts">+3.9</span></td></tr>
-          <tr><td><span class="rank">4</span></td><td><span class="pname">Thomas Filippi</span></td><td>9</td><td>36 h</td><td><span class="up">+345 €</span></td><td><span class="pts">+2.4</span></td></tr>
-          <tr><td><span class="rank">5</span></td><td><span class="pname">Antoine Bianchi</span></td><td>12</td><td>50 h</td><td><span class="up">+180 €</span></td><td><span class="pts">+0.9</span></td></tr>
-          <tr><td><span class="rank">6</span></td><td><span class="pname">Marie-Anne Leca</span></td><td>7</td><td>28 h</td><td><span class="dn">-120 €</span></td><td><span class="pts" style="color:var(--red)">-1.1</span></td></tr>
-        </tbody>
-      </table>
-    </div>
-
-    <div class="rank-updated">Mis à jour le 22 juin 2026 · Saison 2026 · Points calculés selon le système ELO adapté au poker</div>
-  </div>
 </section>
 
 <!-- ══════════════ PALMARÈS ══════════════ -->
@@ -720,7 +757,7 @@
         <div class="regle-icon">⏱️</div>
         <div>
           <div class="regle-title">Ponctualité</div>
-          <div class="regle-desc">Les joueurs doivent être présents 15 minutes avant le début. En cas de retard, les blinds sont postées automatiquement. Après 2 niveaux, la place est perdue.</div>
+          <div class="regle-desc">Les joueurs doivent être présents 15 minutes avant le début.Un bonus de ponctualité sera attribué aux joueurs assidus.</div>
         </div>
       </div>
       <div class="regle-card rv d2">
