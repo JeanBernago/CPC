@@ -451,6 +451,52 @@
       .ft-inner{flex-direction:column;align-items:flex-start}
       .ft-copy{text-align:left}
     }
+    /* ── VOTE ── */
+
+.vote-option{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  padding:15px;
+  margin-bottom:12px;
+  border:1px solid var(--border);
+  border-radius:8px;
+  cursor:pointer;
+  transition:.25s;
+  background:rgba(255,255,255,0.02);
+}
+
+.vote-option:hover{
+  border-color:var(--gold);
+  background:rgba(200,160,51,0.08);
+}
+
+.vote-option input{
+  accent-color:var(--gold);
+  transform:scale(1.2);
+}
+
+.vote-option span{
+  font-size:.95rem;
+  color:var(--ivory);
+}
+    document.getElementById("voteBtn").addEventListener("click", () => {
+
+    const choix = document.querySelector(
+        'input[name="tournoi"]:checked'
+    );
+
+    if(!choix){
+        document.getElementById("messageVote").innerHTML =
+        "⚠️ Sélectionnez un format.";
+        return;
+    }
+
+    document.getElementById("messageVote").innerHTML =
+    "✅ Vote enregistré pour : <strong>" +
+    choix.parentElement.textContent +
+    "</strong>";
+});
   </style>
 </head>
 <body>
@@ -550,64 +596,59 @@
     </div>
   </div>
 </section>
-  <!-- ══════════════ VOTE ══════════════ -->
-  <section id="vote-tournoi" class="vote-section">
-    <h2>🗳️ Vote du prochain tournoi CPC</h2>
+<!-- ══════════════ VOTE ══════════════ -->
+<section id="vote" class="section">
+  <div class="inner">
 
-    <p>
-        Choisissez le format que vous souhaitez jouer lors du prochain tournoi.
-        Le format ayant le plus de votes sera sélectionné.
-    </p>
+    <div class="section-head rv">
+      <div class="s-eyebrow">🗳️ Vote CPC</div>
+      <h2 class="s-title">Choisissez le prochain <span>format</span></h2>
+    </div>
 
-    <form id="voteForm">
-        <label>
-            <input type="radio" name="tournoi" value="Deepstack Holdem Rebuy + Add-on">
-            Deepstack Holdem Rebuy + Add-on
+    <div class="party-card featured rv" style="max-width:700px;margin:auto;">
+
+      <div class="pbadge featured">
+        🎲 Vote des membres
+      </div>
+
+      <div class="p-title">
+        Quel format souhaitez-vous jouer lors du prochain tournoi ?
+      </div>
+
+      <div style="margin-top:25px">
+
+        <label class="vote-option">
+          <input type="radio" name="tournoi" value="deepstack">
+          <span>♠ Deepstack Holdem Rebuy + Add-on</span>
         </label>
-        <br><br>
 
-        <label>
-            <input type="radio" name="tournoi" value="PL4 Omaha">
-            PL4 Omaha (Pourquoi pas)
+        <label class="vote-option">
+          <input type="radio" name="tournoi" value="omaha">
+          <span>♦ PL4 Omaha (Pourquoi pas)</span>
         </label>
-        <br><br>
 
-        <label>
-            <input type="radio" name="tournoi" value="KO Progressif">
-            KO Progressif
+        <label class="vote-option">
+          <input type="radio" name="tournoi" value="ko">
+          <span>♥ KO Progressif</span>
         </label>
-        <br><br>
 
-        <label>
-            <input type="radio" name="tournoi" value="Freezout">
-            Freezout
+        <label class="vote-option">
+          <input type="radio" name="tournoi" value="freezout">
+          <span>♣ Freezout</span>
         </label>
-        <br><br>
 
-        <button type="submit">Voter</button>
-    </form>
+      </div>
 
-    <p id="messageVote"></p>
+      <button id="voteBtn" class="btn-primary" style="margin-top:25px;">
+        Voter →
+      </button>
+
+      <div id="messageVote" style="margin-top:15px;color:var(--gold);"></div>
+
+    </div>
+
+  </div>
 </section>
-
-<script>
-document.getElementById("voteForm").addEventListener("submit", function(e) {
-    e.preventDefault();
-
-    const choix = document.querySelector('input[name="tournoi"]:checked');
-
-    if (!choix) {
-        document.getElementById("messageVote").innerHTML =
-            "⚠️ Veuillez sélectionner un format.";
-        return;
-    }
-
-    localStorage.setItem("voteCPC", choix.value);
-
-    document.getElementById("messageVote").innerHTML =
-        "✅ Votre vote pour <strong>" + choix.value + "</strong> a été enregistré.";
-});
-</script>
 
 <!-- ══════════════ PARTIES ══════════════ -->
 <section id="parties" class="section">
